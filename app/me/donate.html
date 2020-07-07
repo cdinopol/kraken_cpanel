@@ -129,32 +129,38 @@
                                 <br/><br/>
                                 <span class="font-weight-light font-italic">The entire payment process will be secure and directly handled by <a href="https://stripe.com/" target="_blank">Stripe.com</a>. We do not collect nor store any information from you and your credit/debit card.</span>
                                 <hr />
-                                <form class="form-horizontal form-material col-md-6 mt-5">
+                                <form class="form-horizontal form-material col-md-6 mt-5" method="post">
                                     <div class="form-group row">
-                                        <label class="col-md-4 col-form-label">Confirm Email:</label>
+                                        <label for="email" class="col-md-4 col-form-label">Confirm Email:</label>
                                         <div class="col-md-8">
-                                            <input type="email" name="email" placeholder="Confirm your email" class="form-control">
+                                            <input type="email" name="email" id="email" placeholder="Confirm your email" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-4 col-form-label">Confirm Password:</label>
+                                        <label for="password" class="col-md-4 col-form-label">Confirm Password:</label>
                                         <div class="col-md-8">
-                                            <input type="password" name="password" placeholder="Confirm your password" class="form-control">
+                                            <input type="password" name="password" id="password" placeholder="Confirm your password" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="amount" class="col-md-4 col-form-label">Amount (USD):</label>
                                         <div class="col-md-8">
-                                            <input type="number"  name="amount" min="0" class="form-control">
+                                            <input type="number"  name="amount" id="amount" min="0" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group pl-4 mt-5">
-                                        <input type="checkbox" class="form-check-input" id="agree_check_1">
+                                        <input type="checkbox" class="form-check-input" id="agree_check_1" required>
                                         <label class="form-check-label" for="agree_check_1">I agree that it is non-refundable and that I am authorizing the donation.</label>
+                                        <div class="invalid-feedback">
+                                            You must agree to proceed
+                                        </div>
                                     </div>
                                     <div class="form-group pl-4">
-                                        <input type="checkbox" class="form-check-input" id="agree_check_2">
-                                        <label class="form-check-label" for="agree_check_2">I agree with the <a href="/terms_and_condition" target="_blank">Terms and Condition</a>.</label>
+                                        <input type="checkbox" class="form-check-input" id="agree_check_2" required>
+                                        <label class="form-check-label" for="agree_check_2">I agree with the <a href="/donation_tc" target="_blank">Terms and Condition</a>.</label>
+                                        <div class="invalid-feedback">
+                                            You must agree with our Terms and Conditions
+                                        </div>
                                     </div>
                                     <div class="form-group text-right mt-5">
                                         <div class="col-md-12">

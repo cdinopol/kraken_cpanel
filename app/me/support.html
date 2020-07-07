@@ -127,23 +127,23 @@
                             <div class="card-body">
                                 <span class="font-weight-light font-italic">If you have any issues, questions or concerns with anything, don't hesitate to let us know!</span>
                                 <hr />
-                                <form class="form-horizontal form-material col-md-6 mt-5">
+                                <form class="form-horizontal form-material col-md-6 mt-5" method="POST">
                                     <div class="form-group row">
                                         <label for="category" class="col-md-3 col-form-label">Category:</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="category" name="category">
-                                                <option value="">Game Bug</option>
-                                                <option value="">Website Bug</option>
-                                                <option value="">CPanel Bug</option>
-                                                <option value="">Donation Concerns</option>
-                                                <option value="">Others</option>
+                                            <select class="form-control" id="category" name="category" required>
+                                                <option value="Game Bug">Game Bug</option>
+                                                <option value="Website Bug">Website Bug</option>
+                                                <option value="CPanel Bug">CPanel Bug</option>
+                                                <option value="Donation Concerns">Donation Concerns</option>
+                                                <option value="Others">Others</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="message" class="col-md-3 col-form-label">Message:</label>
                                         <div class="col-md-9">
-                                            <textarea class="form-control" id="message" rows="6"></textarea>
+                                            <textarea class="form-control" name="message" id="message" rows="6" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group text-right mt-5">
