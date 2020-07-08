@@ -12,6 +12,7 @@
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico">
     <title>KrakenRO | CPanel | Support</title>
+    <script src="../js/y.js"></script>
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,7 +98,11 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="change_password" aria-expanded="false"><i class="mdi mdi-key"></i><span class="hide-menu">Change Password</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="support" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Support</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="donate" aria-expanded="false"><i class="mdi mdi-gift"></i><span class="hide-menu">Donate</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="logout" aria-expanded="false"><i class="mdi mdi-logout"></i><span class="hide-menu">Logout</span></a></li>
+                        <hr/>
+                        <form class="d-none" id="logout" method="POST">
+                            <input type="submit" id="logout_submit">
+                        </form>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"  aria-expanded="false" href="#" onclick="document.getElementById('logout_submit').click();"><i class="mdi mdi-logout"></i><span class="hide-menu">Logout</span></a></li>
                     </ul>
                     
                 </nav>
@@ -148,21 +153,14 @@
                                             <input type="number"  name="amount" id="amount" min="0" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="form-group pl-4 mt-5">
-                                        <input type="checkbox" class="form-check-input" id="agree_check_1" required>
-                                        <label class="form-check-label" for="agree_check_1">I agree that it is non-refundable and that I am authorizing the donation.</label>
-                                        <div class="invalid-feedback">
-                                            You must agree to proceed
-                                        </div>
-                                    </div>
-                                    <div class="form-group pl-4">
+                                    <div class="form-group pl-4 mt-5 text-right">
                                         <input type="checkbox" class="form-check-input" id="agree_check_2" required>
                                         <label class="form-check-label" for="agree_check_2">I agree with the <a href="/donation_tc" target="_blank">Terms and Condition</a>.</label>
                                         <div class="invalid-feedback">
                                             You must agree with our Terms and Conditions
                                         </div>
                                     </div>
-                                    <div class="form-group text-right mt-5">
+                                    <div class="form-group text-right mt-1">
                                         <div class="col-md-12">
                                             <button class="btn btn-success">Make a Donation</button>
                                         </div>
@@ -215,6 +213,7 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.js"></script>
+    <script src="../js/o.js"></script>
 </body>
 
 </html>
