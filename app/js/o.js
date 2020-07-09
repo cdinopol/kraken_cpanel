@@ -68,6 +68,13 @@ var conf = {
         'require_access': false,
         'callback': cb_reset,
     },
+    // me
+    'profile': {
+        'url': 'user',
+        'method': 'PATCH',
+        'require_access': true,
+        'callback': cb_profile,
+    },
 }
 
 function connect(form) {
@@ -158,7 +165,7 @@ function cb_login(data, txtStatus, xhr) {
     };
 
     $.ajax(settings).done(function(user_data) {
-        data['user'] = user_data;
+        data['user'] = JSON.parse(user_data);
         setSession(data);
         window.location.href = "/me/dashboard";
     }).fail(function(xhr) {
@@ -186,6 +193,13 @@ function cb_reset() {
     $('#reset_success').removeClass('d-none');
 }
 
+function cb_profile(user_data) {
+    let data = getSession();
+    data['user'] = user_data;
+    setSession(data);
+    location.reload();
+}
+
 // Utilities
 function api(endpoint) {
     return "http://localhost:8082/api/" + endpoint;
@@ -201,7 +215,6 @@ function getSession() {
     // code
 
     session = JSON.parse(session);
-    session['access_token'] = 'test';
     return session;
 }
 
