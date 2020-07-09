@@ -224,7 +224,11 @@ function cb_support() {
 
 // Utilities
 function api(endpoint) {
-    return "http://localhost:8082/api/" + endpoint;
+    let api_base = "https://api.krakenro.com/api/";
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+        api_base = "http://localhost:8082/api/";
+
+    return api_base + endpoint;
 }
 
 function getSession() {
