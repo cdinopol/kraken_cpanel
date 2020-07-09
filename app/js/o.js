@@ -3,10 +3,12 @@
 // browser check
 if(typeof(Storage) === void(0)) {
     alert('Your browser is old and might compromise security! Please update your browser!');
-    window.location.replace('https://www.krakenro.com')
+    window.location.replace('https://www.krakenro.com');
 }
 
 var SESSION = 'kuser';
+var submitBtn = null;
+var submitBtnTxt = null;
 
 (function($) {
 $("form").submit(function() {
@@ -15,6 +17,12 @@ $("form").submit(function() {
 
     var successValidation = true;
     var form = $(this);
+
+    // disable button
+    submitBtn = form.find(":submit");
+    submitBtnTxt = submitBtn.text();
+    submitBtn.prop('disabled', true);
+    submitBtn.text('Please wait...');
 
     // init display
     $('.kalerts').addClass('d-none');
@@ -55,6 +63,11 @@ var conf = {
         'require_access': false,
         'callback': cb_forgot_pw,
     },
+    'reset': {
+        'url': 'auth/reset_password',
+        'require_access': false,
+        'callback': cb_reset,
+    },
 }
 
 function connect(form) {
@@ -93,8 +106,13 @@ function connect(form) {
         "data": (objectData ? JSON.stringify(objectData) : null),
     };
 
-    $.ajax(settings).done(function(data, txtStatus, xhr) {
+    $.ajax(settings)
+    
+    // success
+    .done(function(data, txtStatus, xhr) {
         item.callback(data, txtStatus, xhr);
+
+    // errors
     }).fail(function(xhr) {
         // not found
         if (xhr.status >= 400 && xhr.status <= 404) {
@@ -110,6 +128,13 @@ function connect(form) {
         // other errors
         } else {
             $('#sv_error').removeClass('d-none');
+        }
+
+    // always
+    }).always(function() {
+        if (submitBtn) {
+            submitBtn.prop('disabled', false);
+            submitBtn.text(submitBtnTxt);
         }
     });
 }
@@ -154,6 +179,11 @@ function cb_register() {
 function cb_forgot_pw() {
     $('#forgot_pw_form').addClass('d-none');
     $('#forgot_pw_success').removeClass('d-none');
+}
+
+function cb_reset() {
+    $('#reset_form').addClass('d-none');
+    $('#reset_success').removeClass('d-none');
 }
 
 // Utilities
