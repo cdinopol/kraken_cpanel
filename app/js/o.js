@@ -75,6 +75,18 @@ var conf = {
         'require_access': true,
         'callback': cb_profile,
     },
+    'change_pw': {
+        'url': 'auth/change_password',
+        'method': 'POST',
+        'require_access': true,
+        'callback': cb_change_pw,
+    },
+    'support': {
+        'url': 'user/support_ticket',
+        'method': 'POST',
+        'require_access': true,
+        'callback': cb_support,
+    },
 }
 
 function connect(form) {
@@ -198,6 +210,16 @@ function cb_profile(user_data) {
     data['user'] = user_data;
     setSession(data);
     location.reload();
+}
+
+function cb_change_pw() {
+    $('#change_pw_form').addClass('d-none');
+    $('#change_pw_success').removeClass('d-none');
+}
+
+function cb_support() {
+    $('#support_form').addClass('d-none');
+    $('#support_success').removeClass('d-none');
 }
 
 // Utilities

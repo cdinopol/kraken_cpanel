@@ -128,11 +128,25 @@
                 <div class="row">
                     <!-- Column -->
                     <div class="col-12">
-                        <div class="card">
+
+                        <div class="card d-none" id="support_success">
+                            <div class="card-header">
+                                <h2>Support</h2>
+                            </div>
                             <div class="card-body">
-                                <span class="font-weight-light font-italic">If you have any issues, questions or concerns with anything, don't hesitate to let us know!</span>
+                                <h4 class="card-title text-left">Concern Submitted</h4>
+                                <p>You're concern has been submitted to our support team. Please give us time to evaluate the issue. We will email you back as soon as we can.</p>
+                            </div>
+                        </div>
+
+                        <div class="card" id="support_form">
+                            <div class="card-header">
+                                <h2>Support</h2>
+                            </div>
+                            <div class="card-body">
+                                <span class="font-weight-light font-italic">If you have any issues, questions or concerns, don't hesitate to let us know!</span>
                                 <hr />
-                                <form class="form-horizontal form-material col-md-6 mt-5" method="POST">
+                                <form class="form-horizontal form-material col-md-6 mt-5" method="POST" id="support">
                                     <div class="form-group row">
                                         <label for="category" class="col-md-3 col-form-label">Category:</label>
                                         <div class="col-md-9">
@@ -148,7 +162,7 @@
                                     <div class="form-group row">
                                         <label for="message" class="col-md-3 col-form-label">Message:</label>
                                         <div class="col-md-9">
-                                            <textarea class="form-control" name="message" id="message" rows="6" required></textarea>
+                                            <textarea class="form-control" name="message" id="message" rows="6" required minlength="10" maxlength="300"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group mt-5">
