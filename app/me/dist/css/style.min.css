@@ -13,3 +13,6 @@ body {
 a.active {
 	background: #fed136;
 }
+.sidebar-nav ul .sidebar-item {
+	width: 100%;
+}
