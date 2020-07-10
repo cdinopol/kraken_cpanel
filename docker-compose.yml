@@ -7,8 +7,8 @@ services:
       sh -c "
         nginx -g 'daemon off;'"
     expose:
-        - 8083
+        - 80
     volumes:
         - ./app:/usr/share/nginx/html
     ports:
-      - "8083:8083"
+      - "8083:80"
