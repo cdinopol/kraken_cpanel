@@ -1,5 +1,5 @@
 const env = {
-    API_BASE: 'https://api.krakenro.com/api',
+    API_BASE: 'https://api.krakenro.com/api/',
     STRIPE_PK:'pk_test_51H1YObCO8wZkPTwzW6OQQ0nlaldi74gx5nJFzNbL9zZc8ObtsERbv3G5A4sC0JAAOjvyhnDNftKigVMVrej81rEy00zVfalek1',
     HOME_WEBSITE: 'https://www.krakenro.com',
 }
