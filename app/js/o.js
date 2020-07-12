@@ -1,9 +1,15 @@
+const env = {
+    API_BASE: 'https://api.krakenro.com/api/',
+    STRIPE_PK:'pk_live_51H1YObCO8wZkPTwz0DmN4vtYWoZBzPOnSbzWUJJjs9LTySvPMn4dhAGeLfiW1fEuWUeScxfOsEYALdgfO5zjqHLt00htyjbiCs',
+    HOME_WEBSITE: 'https://www.krakenro.com',
+}
+
 'use strict';
 
 // browser check
 if(typeof(Storage) === void(0)) {
     alert('Your browser is old and might compromise security! Please update your browser!');
-    window.location.replace('https://www.krakenro.com');
+    window.location.replace(env.HOME_WEBSITE);
 }
 
 var SESSION = 'kuser';
@@ -86,6 +92,12 @@ var conf = {
         'method': 'POST',
         'require_access': true,
         'callback': cb_support,
+    },
+    'donate': {
+        'url': 'user/donate',
+        'method': 'POST',
+        'require_access': true,
+        'callback': cb_donate,
     },
 }
 
@@ -222,9 +234,19 @@ function cb_support() {
     $('#support_success').removeClass('d-none');
 }
 
+function cb_donate(session_data) {
+    var stripe = Stripe(env.STRIPE_PK);
+    localStorage.setItem('stripe_session_id', session_data.session_id);
+    stripe.redirectToCheckout({
+        sessionId: session_data.session_id
+    }).then(function (result) {
+        localStorage.removeItem('stripe_session_id');
+    });
+}
+
 // Utilities
 function api(endpoint) {
-    let api_base = "https://api.krakenro.com/api/";
+    let api_base = env.API_BASE;
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
         api_base = "http://localhost:8082/api/";
 
